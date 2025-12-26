@@ -1,16 +1,11 @@
 
 
--- =============================================================
--- BÖLÜM 1: TEMİZLİK VE ŞEMA
--- =============================================================
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO public;
 
--- =============================================================
--- BÖLÜM 2: TABLOLAR (DDL)
--- =============================================================
+-- TABLOLAR (DDL)
 
 -- 1. Roller
 CREATE TABLE Roller (
@@ -138,11 +133,10 @@ CREATE TABLE SilinenTaleplerLog (
     SilinenVeri TEXT
 );
 
--- =============================================================
--- BÖLÜM 3: FONKSİYONLAR, PROSEDÜRLER VE TRIGGERLAR
--- =============================================================
+-- FONKSİYONLAR, PROSEDURLER VE TRIGGERLAR
 
--- A) Tarih Güncelleme
+
+-- Tarih Güncelleme
 CREATE OR REPLACE FUNCTION tarih_guncelle()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -156,7 +150,7 @@ BEFORE UPDATE ON DersProgrami
 FOR EACH ROW
 EXECUTE FUNCTION tarih_guncelle();
 
--- B) Sınıf Kapasite Kontrolü
+-- Sinif Kapasite Kontrolu
 CREATE OR REPLACE FUNCTION fn_sinif_kapasite_kontrol()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -175,7 +169,7 @@ BEFORE INSERT ON OgrenciDetay
 FOR EACH ROW
 EXECUTE FUNCTION fn_sinif_kapasite_kontrol();
 
--- C) Ders Programı Çakışma (AYNI DERSLİK)
+-- Ders Programi Cakisma (aynı derslik)
 CREATE OR REPLACE FUNCTION fn_ders_cakisma_kontrol()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -200,7 +194,7 @@ BEFORE INSERT OR UPDATE ON DersProgrami
 FOR EACH ROW
 EXECUTE FUNCTION fn_ders_cakisma_kontrol();
 
--- D) Sınıf Programı Çakışma (AYNI SINIF SEVİYESİ)
+-- Sinif Programi Cakisma (aynı sinif seviyesi)
 CREATE OR REPLACE FUNCTION fn_sinif_ders_cakisma_kontrol()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -229,7 +223,7 @@ BEFORE INSERT OR UPDATE ON DersProgrami
 FOR EACH ROW
 EXECUTE FUNCTION fn_sinif_ders_cakisma_kontrol();
 
--- E) Silme Loglaması
+-- Silme Loglamasi
 CREATE OR REPLACE FUNCTION fn_talep_silme_log()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -244,7 +238,7 @@ AFTER DELETE ON Talepler
 FOR EACH ROW
 EXECUTE FUNCTION fn_talep_silme_log();
 
--- F) Prosedürler (Talep ve Özel Ders Onay)
+--  Prosedurler (Talep ve Ozel Ders Onay)
 CREATE OR REPLACE PROCEDURE TalepOnayla(p_talep_id INT, p_durum VARCHAR)
 LANGUAGE plpgsql AS $$
 BEGIN
@@ -274,28 +268,27 @@ BEGIN
 END;
 $$;
 
--- =============================================================
--- BÖLÜM 4: GÜVENLİK (ROLLER VE RLS)
--- =============================================================
 
--- 1. Rolleri Oluştur
+-- ROLLER VE RLS
+
+--  Rolleri Olusturma
 DO $$ 
 BEGIN
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'ogrenci_rolu') THEN CREATE ROLE ogrenci_rolu; END IF;
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'rehber_rolu') THEN CREATE ROLE rehber_rolu; END IF;
 END $$;
 
--- 2. Şema ve Tablo İzinleri (EN ÖNEMLİ KISIM - Hata buradaydı)
+--  Sema ve Tablo İzinleri
 GRANT USAGE ON SCHEMA public TO ogrenci_rolu;
 GRANT USAGE ON SCHEMA public TO rehber_rolu;
 
 GRANT SELECT ON Denemeler, DenemeSonuclari, Talepler, DersProgrami TO ogrenci_rolu;
 GRANT SELECT ON Denemeler, DenemeSonuclari, Talepler, DersProgrami TO rehber_rolu;
 
--- RLS politikası için öğrencinin bu tabloları okuması lazım:
+-- Ogrenciye tablolari okuma izni
 GRANT SELECT ON Dersler, Derslikler, OgrenciDetay TO ogrenci_rolu;
 
--- 3. RLS Politikaları
+-- RLS Politikaları
 ALTER TABLE DenemeSonuclari ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS ogrenci_sadece_kendini_gorur ON DenemeSonuclari;
 CREATE POLICY ogrenci_sadece_kendini_gorur ON DenemeSonuclari FOR SELECT TO ogrenci_rolu
@@ -318,18 +311,16 @@ USING (
     )
 );
 
--- Rehber her şeyi görsün
+-- Rehber ogretmen  her seyi gorsun
 CREATE POLICY rehber_sonuc_gor ON DenemeSonuclari FOR SELECT TO rehber_rolu USING (true);
 CREATE POLICY rehber_program_gor ON DersProgrami FOR SELECT TO rehber_rolu USING (true);
 
--- =============================================================
--- BÖLÜM 5: VERİ GİRİŞİ (INSERT)
--- =============================================================
+--  INSERT
 
 -- Roller
 INSERT INTO Roller (RolAdi) VALUES ('Ogrenci'), ('Ogretmen'), ('Mudur'), ('Idare'), ('Rehberlik');
 
--- Kullanıcılar (Yönetim)
+-- Kullanıcılar (yonetim)
 INSERT INTO Kullanicilar (Ad, Soyad, TCNo, Sifre, RolID) VALUES
 ('Hasan', 'Yılmaz',  '10000000000', '1234', 3), -- ID:1 Müdür
 ('Fatma', 'Demir',   '20000000000', '1234', 4), -- ID:2 Memur
@@ -337,7 +328,7 @@ INSERT INTO Kullanicilar (Ad, Soyad, TCNo, Sifre, RolID) VALUES
 ('Sevgi', 'Öztürk',  '40000000000', '1234', 2), -- ID:4 Fizik Öğrt
 ('Selin', 'Kaya',    '50000000000', '1234', 5); -- ID:5 Rehberlik
 
--- Personel Detay
+-- Personel detay
 INSERT INTO PersonelDetay (PersonelID, BransID, Maas, HaftalikDersKotasi) VALUES
 (1, 0, 85000, 0),
 (2, 0, 40000, 0),
@@ -347,12 +338,12 @@ INSERT INTO PersonelDetay (PersonelID, BransID, Maas, HaftalikDersKotasi) VALUES
 
 
 
--- Kullanıcılar (Öğrenci)
+-- Kullanicilar (ogrenci)
 INSERT INTO Kullanicilar (Ad, Soyad, TCNo, Sifre, RolID) VALUES
 ('Nisa', 'Yıldız', '11111111111', '1234', 1), -- ID:6
 ('Ceren', 'Celik', '22222222222', '1234', 1); -- ID:7
 
--- Öğrenci Detay
+-- Ogrenci detay
 INSERT INTO OgrenciDetay (OgrenciID, SinifSeviyesi, DanismanOgretmenID) VALUES
 (6, 12, 5),
 (7, 12, 5);
@@ -368,7 +359,7 @@ INSERT INTO Dersler (DersAdi, SinifSeviyesi) VALUES
 INSERT INTO Derslikler (DerslikAdi, Kapasite) VALUES
 ('101-A', 20), ('102-B', 25), ('Zemin Lab', 15);
 
--- Ders Programı (String olarak 'Beklemede' veya 'Onaylandi')
+-- Ders Programi
 INSERT INTO DersProgrami (OgretmenID, DersID, DerslikID, Gun, BaslangicSaati, BitisSaati, OnaylandiMi) VALUES
 (3, 1, 1, 'Pazartesi', '09:00', '10:30', 'Beklemede'), -- Mustafa Hoca Mat
 (4, 2, 2, 'Salı',      '11:00', '12:30', 'Onaylandi'); -- Sevgi Hoca Fizik
@@ -378,12 +369,12 @@ INSERT INTO Denemeler (DenemeAdi, Tarih) VALUES
 ('YKS-1 Türkiye Geneli', '2025-01-15'),
 ('TYT Kurumsal Deneme', '2025-02-01');
 
--- Deneme Sonuçları
+-- Deneme Sonuclari
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan) VALUES
 (1, 6, 90, 10, 87.50, 450.00), -- Nisa
 (1, 7, 75, 25, 68.75, 380.00); -- Ceren
 
--- Ödevler
+-- Odevler
 INSERT INTO Odevler (DersID, OgretmenID, Aciklama, TeslimTarihi) VALUES
 (1, 3, 'İntegral fasikülü ilk 3 test bitecek', '2025-01-10');
 
@@ -397,18 +388,16 @@ INSERT INTO Duyurular (Baslik, Icerik, HedefKitle) VALUES
 
 
 
--- Nisa Yıldız (12. Sınıf) için ek ders programı verileri
--- Not: Bu dersler 12. sınıf olduğu için Nisa sisteme girdiğinde otomatik görecektir.
-
--- 1. ÇARŞAMBA: 09:00 - 10:30 (Mustafa Hoca - Matematik)
+-- Nisa Yıldız 12
+--  Mustafa Hoca  matematik
 INSERT INTO DersProgrami (OgretmenID, DersID, DerslikID, Gun, BaslangicSaati, BitisSaati, OnaylandiMi) 
 VALUES (3, 1, 1, 'Çarşamba', '09:00', '10:30', 'Onaylandi');
 
--- 2. ÇARŞAMBA: 11:00 - 12:30 (Sevgi Hoca - Fizik)
+-- Sevgi Hoca  fizik
 INSERT INTO DersProgrami (OgretmenID, DersID, DerslikID, Gun, BaslangicSaati, BitisSaati, OnaylandiMi) 
 VALUES (4, 5, 2, 'Çarşamba', '11:00', '12:30', 'Onaylandi');
 
--- 3. PERŞEMBE: 13:00 - 14:30 (Mustafa Hoca - Matematik Tekrar)
+-- Mustafa Hoca matematik tekrar
 INSERT INTO DersProgrami (OgretmenID, DersID, DerslikID, Gun, BaslangicSaati, BitisSaati, OnaylandiMi) 
 VALUES (3, 1, 1, 'Perşembe', '13:00', '14:30', 'Onaylandi');
 
@@ -456,30 +445,29 @@ VALUES ('YKS Yıl Sonu Değerlendirme Sınavı', CURRENT_DATE);
 SELECT * FROM Denemeler;
 
 
--- ID: 6 (Nisa Yıldız) 
+-- 6 Nisa Yıldız
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 6, 110, 5, 108.75, 490.00);
 
 SELECT * FROM DenemeSonuclari;
--- ID: 9 (İrem C) 
+
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 9, 95, 15, 91.25, 430.50);
 
--- ID: 11 (Ahmet H)
+-- 11 Ahmet H
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 11, 80, 25, 73.75, 380.00);
 
-
--- ID: 14 (d k)
+-- 14 d k
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 14, 55, 35, 46.25, 290.00);
 
 
--- ID: 16 (p l)
+-- 16 p l
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 16, 85, 10, 82.50, 410.00);
 
--- ID: 17 (pn h)
+-- 17 pn h
 INSERT INTO DenemeSonuclari (DenemeID, OgrenciID, DogruSayisi, YanlisSayisi, NetSayisi, Puan)
 VALUES ((SELECT MAX(DenemeID) FROM Denemeler), 17, 75, 20, 70.00, 370.00);
 
