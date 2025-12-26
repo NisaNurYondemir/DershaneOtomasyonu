@@ -1,0 +1,14 @@
+D:\finansTakip\DershaneOtomasyonu\bin\Debug\net7.0\DershaneOtomasyonu.exe
+D:\finansTakip\DershaneOtomasyonu\bin\Debug\net7.0\DershaneOtomasyonu.deps.json
+D:\finansTakip\DershaneOtomasyonu\bin\Debug\net7.0\DershaneOtomasyonu.runtimeconfig.json
+D:\finansTakip\DershaneOtomasyonu\bin\Debug\net7.0\DershaneOtomasyonu.dll
+D:\finansTakip\DershaneOtomasyonu\bin\Debug\net7.0\DershaneOtomasyonu.pdb
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.GeneratedMSBuildEditorConfig.editorconfig
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.AssemblyInfoInputs.cache
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.AssemblyInfo.cs
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.csproj.CoreCompileInputs.cache
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.dll
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\refint\DershaneOtomasyonu.dll
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.pdb
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\DershaneOtomasyonu.genruntimeconfig.cache
+D:\finansTakip\DershaneOtomasyonu\obj\Debug\net7.0\ref\DershaneOtomasyonu.dll

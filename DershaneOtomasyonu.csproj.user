@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="AnaSayfaUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DenemelerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DersProgramiOlusturUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DersProgramiUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DersProgramOnayUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DuyuruOlusturUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="MudurMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OdevlerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OdevYukleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OgrenciBilgiGuncelleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OgrenciDenemelerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgrenciDersProgramiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgrenciKayitUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OgrenciListeleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OgrenciLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgrenciMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgrenciOdevlerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgrenciTaleplerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgretmenDersProgramiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OgretmenListeleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OgretmenMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PersonelLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PersonelMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TaleplerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="TalepOnayUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

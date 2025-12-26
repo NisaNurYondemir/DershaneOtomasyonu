@@ -1,0 +1,268 @@
+﻿namespace DershaneOtomasyonu
+{
+    partial class PersonelMainForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonelMainForm));
+            panel1 = new Panel();
+            pictureBox6 = new PictureBox();
+            anaSayfaButton = new Button();
+            pictureBox3 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            OgrencilerButton = new Button();
+            kayitButton = new Button();
+            pictureBox2 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            duyurularButton = new Button();
+            dersProgramıOlusturBtn = new Button();
+            pictureBox4 = new PictureBox();
+            panel2 = new Panel();
+            closeButton = new Button();
+            label1 = new Label();
+            pnlIcerik = new Panel();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel2.SuspendLayout();
+            SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(222, 200, 230);
+            panel1.Controls.Add(pictureBox6);
+            panel1.Controls.Add(anaSayfaButton);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(pictureBox5);
+            panel1.Controls.Add(OgrencilerButton);
+            panel1.Controls.Add(kayitButton);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(duyurularButton);
+            panel1.Controls.Add(dersProgramıOlusturBtn);
+            panel1.Controls.Add(pictureBox4);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(323, 800);
+            panel1.TabIndex = 3;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(16, 261);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(40, 40);
+            pictureBox6.TabIndex = 12;
+            pictureBox6.TabStop = false;
+            // 
+            // anaSayfaButton
+            // 
+            anaSayfaButton.BackgroundImageLayout = ImageLayout.None;
+            anaSayfaButton.ForeColor = SystemColors.ControlText;
+            anaSayfaButton.Location = new Point(60, 261);
+            anaSayfaButton.Name = "anaSayfaButton";
+            anaSayfaButton.Size = new Size(239, 40);
+            anaSayfaButton.TabIndex = 11;
+            anaSayfaButton.Text = "Ana Sayfa";
+            anaSayfaButton.UseVisualStyleBackColor = true;
+            anaSayfaButton.Click += anaSayfaButton_Click;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(16, 501);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(40, 40);
+            pictureBox3.TabIndex = 10;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(16, 441);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(40, 40);
+            pictureBox5.TabIndex = 9;
+            pictureBox5.TabStop = false;
+            // 
+            // OgrencilerButton
+            // 
+            OgrencilerButton.BackgroundImageLayout = ImageLayout.None;
+            OgrencilerButton.Location = new Point(60, 501);
+            OgrencilerButton.Name = "OgrencilerButton";
+            OgrencilerButton.Size = new Size(239, 40);
+            OgrencilerButton.TabIndex = 8;
+            OgrencilerButton.Text = "Öğrenciler";
+            OgrencilerButton.UseVisualStyleBackColor = true;
+            OgrencilerButton.Click += OgrencilerButton_Click;
+            // 
+            // kayitButton
+            // 
+            kayitButton.BackgroundImageLayout = ImageLayout.None;
+            kayitButton.ForeColor = SystemColors.ControlText;
+            kayitButton.Location = new Point(60, 441);
+            kayitButton.Name = "kayitButton";
+            kayitButton.Size = new Size(239, 40);
+            kayitButton.TabIndex = 7;
+            kayitButton.Text = "Yeni Kayıt";
+            kayitButton.UseVisualStyleBackColor = true;
+            kayitButton.Click += kayitButton_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(16, 381);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(40, 40);
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(16, 321);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // duyurularButton
+            // 
+            duyurularButton.BackgroundImageLayout = ImageLayout.None;
+            duyurularButton.Location = new Point(60, 381);
+            duyurularButton.Name = "duyurularButton";
+            duyurularButton.Size = new Size(239, 40);
+            duyurularButton.TabIndex = 4;
+            duyurularButton.Text = "Duyurular";
+            duyurularButton.UseVisualStyleBackColor = true;
+            duyurularButton.Click += duyurularButton_Click;
+            // 
+            // dersProgramıOlusturBtn
+            // 
+            dersProgramıOlusturBtn.BackgroundImageLayout = ImageLayout.None;
+            dersProgramıOlusturBtn.ForeColor = SystemColors.ControlText;
+            dersProgramıOlusturBtn.Location = new Point(60, 321);
+            dersProgramıOlusturBtn.Name = "dersProgramıOlusturBtn";
+            dersProgramıOlusturBtn.Size = new Size(239, 40);
+            dersProgramıOlusturBtn.TabIndex = 3;
+            dersProgramıOlusturBtn.Text = "Ders Programı Oluştur";
+            dersProgramıOlusturBtn.UseVisualStyleBackColor = true;
+            dersProgramıOlusturBtn.Click += dersProgramıOlusturBtn_Click;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(112, 81);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(100, 100);
+            pictureBox4.TabIndex = 2;
+            pictureBox4.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(198, 180, 200);
+            panel2.Controls.Add(closeButton);
+            panel2.Location = new Point(322, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(879, 50);
+            panel2.TabIndex = 4;
+            // 
+            // closeButton
+            // 
+            closeButton.Location = new Point(836, 12);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(30, 30);
+            closeButton.TabIndex = 26;
+            closeButton.Text = "X";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(706, 150);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 5;
+            // 
+            // pnlIcerik
+            // 
+            pnlIcerik.Location = new Point(322, 48);
+            pnlIcerik.Name = "pnlIcerik";
+            pnlIcerik.Size = new Size(879, 752);
+            pnlIcerik.TabIndex = 6;
+            // 
+            // PersonelMainForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1200, 800);
+            Controls.Add(pnlIcerik);
+            Controls.Add(panel1);
+            Controls.Add(panel2);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "PersonelMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "PersonelMainForm";
+            Load += PersonelMainForm_Load;
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel2.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Panel panel1;
+        private PictureBox pictureBox6;
+        private Button anaSayfaButton;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox5;
+        private Button OgrencilerButton;
+        private Button kayitButton;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
+        private Button duyurularButton;
+        private Button dersProgramıOlusturBtn;
+        private PictureBox pictureBox4;
+        private Panel panel2;
+        private Button closeButton;
+        private Label label1;
+        private Panel pnlIcerik;
+    }
+}
